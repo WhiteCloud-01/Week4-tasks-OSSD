@@ -1,0 +1,42 @@
+even_count = 0
+odd_count = 0
+largest_positive = None
+positive_sum = 0
+positive_count = 0
+
+while True:
+    num = int(input("Enter an integer (or 0 to stop): "))
+
+    # Stop the program when the user enters 0
+    if num == 0:
+        break
+
+    # Ignore negative numbers using continue
+    if num < 0:
+        print("Negative number ignored.")
+        continue
+
+    # Analyze positive numbers
+    positive_count += 1
+    positive_sum += num
+
+    if num % 2 == 0:
+        even_count += 1
+        print(f"{num} is Even.")
+    else:
+        odd_count += 1
+        print(f"{num} is Odd.")
+
+    if largest_positive is None or num > largest_positive:
+        largest_positive = num
+
+print("\n--- Number Analysis Summary ---")
+if positive_count == 0:
+    print("No positive numbers were entered. Average cannot be calculated.")
+else:
+    average = positive_sum / positive_count
+    print(f"Total Even Numbers: {even_count}")
+    print(f"Total Odd Numbers: {odd_count}")
+    print(f"Largest Positive Number: {largest_positive}")
+    print(f"Sum of Positive Numbers: {positive_sum}")
+    print(f"Average of Positive Numbers: {average:.2f}")
