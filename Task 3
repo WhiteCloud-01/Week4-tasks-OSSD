@@ -1,0 +1,27 @@
+start = int(input("Enter starting number: "))
+end = int(input("Enter ending number: "))
+
+prime_count = 0
+prime_sum = 0
+
+print("Prime numbers in range:", end=" ")
+
+for num in range(start, end + 1):
+    # Skip numbers less than 2
+    if num < 2:
+        continue
+
+    is_prime = True
+    # Test if num has any divisor other than 1 and itself
+    for divisor in range(2, num):
+        if num % divisor == 0:
+            is_prime = False
+            break
+
+    if is_prime:
+        print(num, end=" ")
+        prime_count += 1
+        prime_sum += num
+
+print(f"\nTotal prime numbers found: {prime_count}")
+print(f"Sum of prime numbers: {prime_sum}")
