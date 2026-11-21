@@ -1,0 +1,28 @@
+total_revenue = 0
+
+while True:
+    units = float(input("\nEnter units consumed (or -1 to stop): "))
+
+    # Stop without calculating a bill for -1
+    if units == -1:
+        break
+
+    # Reject negative unit consumption
+    if units < 0:
+        print("Invalid input! Units consumed cannot be negative.")
+        continue
+
+    # Calculate progressive bill
+    if units <= 100:
+        bill = units * 10
+    elif units <= 200:
+        bill = (100 * 10) + ((units - 100) * 15)
+    elif units <= 300:
+        bill = (100 * 10) + (100 * 15) + ((units - 200) * 20)
+    else:
+        bill = (100 * 10) + (100 * 15) + (100 * 20) + ((units - 300) * 25)
+
+    print(f"Customer Bill: Rs. {bill:.2f}")
+    total_revenue += bill
+
+print(f"\nTotal Revenue Collected: Rs. {total_revenue:.2f}")
