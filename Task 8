@@ -1,0 +1,30 @@
+stock = 100
+total_sold = 0
+
+while stock > 0:
+    sold = int(input(f"\nCurrent stock: {stock} | Enter quantity sold (or -1 to stop): "))
+
+    # Stop when user enters -1
+    if sold == -1:
+        break
+
+    # Reject zero or negative quantity using continue
+    if sold <= 0:
+        print("Error: Quantity sold must be greater than zero.")
+        continue
+
+    # Reject transaction if quantity exceeds available stock using continue
+    if sold > stock:
+        print(f"Transaction rejected: Only {stock} units available in stock.")
+        continue
+
+    stock -= sold
+    total_sold += sold
+    print(f"Sale recorded! Remaining stock: {stock}")
+
+    if stock == 0:
+        print("Stock has reached zero. Closing sales session.")
+
+print("\n--- Sales Session Summary ---")
+print(f"Total units sold: {total_sold}")
+print(f"Remaining stock: {stock}")
