@@ -1,0 +1,31 @@
+correct_username = "student123"
+correct_password = "password123"
+
+max_attempts = 3
+attempts = 0
+
+while attempts < max_attempts:
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+
+    # Reject empty username or password
+    if username.strip() == "" or password.strip() == "":
+        print("Username and password cannot be empty!")
+        attempts += 1
+        remaining = max_attempts - attempts
+        if remaining > 0:
+            print(f"Attempts remaining: {remaining}\n")
+        else:
+            print("Account locked due to too many failed attempts.")
+        continue
+
+    if username == correct_username and password == correct_password:
+        print("Login successful! Welcome to the university portal.")
+        break
+    else:
+        attempts += 1
+        remaining = max_attempts - attempts
+        if remaining > 0:
+            print(f"Incorrect credentials. Attempts remaining: {remaining}\n")
+        else:
+            print("Account locked due to too many failed attempts.")
